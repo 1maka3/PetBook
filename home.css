@@ -6,16 +6,17 @@
     --dark-color-lightness: 17%;
     --light-color-lightness: 95%;
     --white-color-lightness: 100%;
+    --color-primary: hsl(207, 73%, 53%); /* Nova cor para o botao no tema escuro */
 
     --color-white: hsl(252, 30%, var(--white-color-lightness));
     --color-light: hsl(252, 30%, var(--light-color-lightness));
-    --color-grey: hsl(252, 15%, 65%);
+    --color-grey: hsl(253, 100%, 70%);
     --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
     --color-secondary: hsl(252, 100%, 90%);
     --color-success: hsl(120, 95%, 65%);
     --color-danger: hsl(0, 95%, 65%);
     --color-dark: hsl(252, 30%, var(--dark-color-lightness));
-    --color-black: hsl(252, 30%, 10%);
+    --color-black: hsl(0, 0%, 0%);
 
     --border-radius: 2rem;
     --card-border-radius: 1rem;
@@ -25,7 +26,54 @@
 
     --sticky-top-left: 5.4rem;
     --sticky-top-right: -18rem;
+    
+/* Estilos padrão para os botões, possivelmente já existentes */
+.dark-theme .btn {
+    background-color: #555; /* Cor de fundo para botões no tema escuro */
+    color: #fff; /* Cor do texto para botões no tema escuro */
+}
 
+.dark-theme .btn-primary {
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgb(144, 85, 211) 50%, rgb(81, 69, 245) 100%);
+    color: white; /* texto branco para melhor leitura */
+    border: none; /* nenhum borda para um look moderno */
+    padding: var(--btn-padding);
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer; /* cursor em forma de ponteiro para indicar clicabilidade */
+    transition: all 300ms ease;
+    
+
+}.btn-primary:hover {
+    transform: scale(1.05); /* ligeiro aumento quando hover */
+}
+
+.dark-theme {
+
+    --primary-color-hue: 252;
+    --dark-color-lightness: 100%;
+    --light-color-lightness: 10%;
+    --white-color-lightness: 15%;
+
+    --color-white: hsl(252, 0%, var(--white-color-lightness));
+    --color-light: hsl(252, 0%, var(--light-color-lightness));
+    --color-grey: hsl(231, 100%, 67%);
+    --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
+    --color-secondary: hsl(0, 0%, 100%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-danger: hsl(0, 95%, 65%);
+    --color-dark: hsl(252, 100%, var(--dark-color-lightness));
+    --color-black: hsl(0, 0%, 100%);
+
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+    --btn-padding: 0.6rem 2rem;
+    --search-padding: 0.6rem 1rem;
+    --card-padding: 1rem;
+
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
 }
 
 *, *::before, *::after {
@@ -64,13 +112,15 @@ img {
 }
 
 .btn {
-    display: inline-block;
+    background: linear-gradient(90deg, rgba(66, 66, 66, 0.808) 0%, rgba(66, 66, 66, 0.900) 50%, rgba(66, 66, 66, 0.808) 100%);
+    color: white; /* texto branco para melhor leitura */
+    border: none; /* nenhum borda para um look moderno */
     padding: var(--btn-padding);
-    font-weight: 500;
     border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 300ms ease;
+    font-weight: 500;
     font-size: 0.9rem;
+    cursor: pointer; /* cursor em forma de ponteiro para indicar clicabilidade */
+    transition: all 300ms ease;
 }
 
 .btn:hover {
@@ -78,8 +128,16 @@ img {
 }
 
 .btn-primary {
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: linear-gradient(90deg, rgba(81, 69, 245) 0%, rgb(144, 85, 211) 50%, rgb(131, 58, 180, 1) 100%);
+    color: white; /* texto branco para melhor leitura */
+    border: none; /* nenhum borda para um look moderno */
+    padding: var(--btn-padding);
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer; /* cursor em forma de ponteiro para indicar clicabilidade */
+    transition: all 300ms ease;
+    
 }
 
 .text-bold {
@@ -183,7 +241,7 @@ main .container .left .profile {
 
 .left .sidebar i {
     font-size: 1.4rem;
-    color: var(--color-grey);
+    color: var(--color-black);
     margin-left: 2rem;
     position: relative;
 }
@@ -233,6 +291,10 @@ main .container .left .profile {
     overflow: hidden;
 }
 
+.left .sidebar .menu-item:hover {
+    background: var(--color-primary); /* ou qualquer outra cor */
+}
+
 .left .btn {
     margin-top: 1rem;
     width: 100%;
@@ -251,7 +313,7 @@ main .container .left .profile {
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
-    z-index: 8;
+    z-index: 1000;
     display: none;
 }
 
@@ -780,30 +842,34 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         width: 80vw; 
     }
 }
-
-.dark-theme {
-    background-color: #1e1e1e;
-    color: #fff;
 }
 
-.dark-theme nav {
-    background-color: #333;
+
+/* função do stories*/
+
+
+.story-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
 }
 
-.dark-theme .search-bar input {
-    background-color: #333;
-    color: #fff;
+.story-content {
+    max-width: 500px;
+    max-height: 80vh;
+    text-align: center;
+    color: white;
 }
 
-.dark-theme .feeds .feed {
-    background-color: #333;
-    color: #fff;
-}
-
-.dark-theme .feeds .feed .head {
-    background-color: #444;
-}
-
-.dark-theme .feeds .feed .comments {
-    color: #ccc;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

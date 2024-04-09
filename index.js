@@ -1,7 +1,7 @@
 // Sidebar
 const menuItems = document.querySelectorAll('.menu-item');
 
-// Messages 
+// Messages
 const messageNotification = document.querySelector('#messages-notifications');
 const messages = document.querySelector('.messages');
 const message = messages.querySelectorAll('.message');
@@ -10,24 +10,21 @@ const messageSearch = document.querySelector('#message-search');
 const changeActiveItem = () => {
     menuItems.forEach(item => {
         item.classList.remove('active');
-    })
-}
+    });
+};
 
 menuItems.forEach(item => {
     item.addEventListener('click', () => {
         changeActiveItem();
         item.classList.add('active');
         if(item.id != 'notifications') {
-            document.querySelector('.notifications-popup').
-            style.display = 'none';
+            document.querySelector('.notifications-popup').style.display = 'none';
         } else {
-            document.querySelector('.notifications-popup').
-            style.display = 'block';
-            document.querySelector('#notifications .notification-count').
-            style.display = 'none';
+            document.querySelector('.notifications-popup').style.display = 'block';
+            document.querySelector('#notifications .notification-count').style.display = 'none';
         }
-    })
-})
+    });
+});
 
 const searchMessage = () => {
     const val = messageSearch.value.toLowerCase();
@@ -38,8 +35,8 @@ const searchMessage = () => {
         } else {
             user.style.display = 'none';
         }
-    })
-}
+    });
+};
 
 messageSearch.addEventListener('keyup', searchMessage);
 
@@ -49,25 +46,48 @@ messageNotification.addEventListener('click', () => {
     setTimeout(() => {
         messages.style.boxShadow = 'none';
     }, 2000);
-})
-
-// Adicionando um ouvinte de eventos para o botão de alternância de tema
-document.getElementById('toggle-theme-btn').addEventListener('click', function() {
-    // Alternando entre os temas claro e escuro
-    document.body.classList.toggle('dark-theme');
-    
-    // Salvando a preferência do usuário no localStorage
-    if (document.body.classList.contains('dark-theme')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
 });
 
-// Verificando se o usuário já possui uma preferência de tema no localStorage
-window.onload = function() {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-    }
-};
+// Adicionando um ouvinte de eventos para o botão de alternância de tema
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    let currentTheme = localStorage.getItem('theme') || 'light-theme';
+
+    document.body.classList.add(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        if (document.body.classList.contains('light-theme')) {
+            document.body.classList.replace('light-theme', 'dark-theme');
+            localStorage.setItem('theme', 'dark-theme');
+        } else {
+            document.body.classList.replace('dark-theme', 'light-theme');
+            localStorage.setItem('theme', 'light-theme');
+        }
+    });
+});
+
+// Função para abrir o story //
+
+
+function openStory(storyElement) {
+    // Aqui você pode abrir um modal ou um novo elemento que mostrará o story
+    // Exemplo:
+    const storyModal = document.createElement('div');
+    storyModal.classList.add('story-modal');
+    // Adicionar conteúdo ao modal, como a imagem do story, texto, etc.
+    storyModal.innerHTML = `<div class="story-content"><img src="${storyElement.querySelector('img').src}" alt="Story image"><p>Some story content...</p></div>`;
+    
+    // Função para fechar o story
+    storyModal.addEventListener('click', () => {
+        document.body.removeChild(storyModal);
+    });
+
+    // Adicionando o modal ao body
+    document.body.appendChild(storyModal);
+}
+
+// Adicionando o ouvinte de eventos para os elementos de story
+document.querySelectorAll('.story').forEach(story => {
+    story.addEventListener('click', () => openStory(story));
+});
