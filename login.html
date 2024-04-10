@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>PetBook Login</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="logo">
+                <img src="LOGO/Logo.png" alt="Logo">
+            </div>
+            <div class="form-value">
+                <form id="loginForm">
+                    <h2>Login</h2>
+                    <div class="inputbox">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <input type="email" id="loginEmail" required>
+                        <label for="loginEmail">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" id="loginPassword" required>
+                        <label for="loginPassword">Password</label>
+                    </div>
+                    <div class="forget">
+                        <label><input type="checkbox"> Remember Me <a href="#">Forget Password</a></label>
+                    </div>
+                    <button type="submit">Log in</button>
+                    <div class="register">
+                        <p>Don't have an account? <a href="register.html">Register here</a></p>
+                    </div>
+                    <div id="loginSuccess" class="bubble-message">
+                        SUCESSFUL LOGIN
+                      </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Firebase Initialization -->
+    <script src="firebaseInit.js"></script>
+    <!-- Login Script -->
+    <script src="login.js"></script>
+</body>
+</html>
