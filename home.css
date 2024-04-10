@@ -873,3 +873,27 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     from { opacity: 0; }
     to { opacity: 1; }
 }
+.story-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.story-content img {
+    width: auto;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 20px;
+}
+
+@keyframes progressAnimation {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 314; } /* Aproximadamente o comprimento da circunferência de um círculo de 100px de raio */
+}
