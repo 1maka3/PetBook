@@ -24,7 +24,7 @@ export function register(email, password) {
       // Usuário criado com sucesso
       console.log('Usuário cadastrado com sucesso:', userCredential.user);
       // Aqui você pode redirecionar para a página de login ou outra página
-      window.location.href = '/login.html'; // Atualize para o caminho correto
+      window.location.href = '/index.html'; // Atualize para o caminho correto
     })
     .catch((error) => {
       console.error('Erro ao cadastrar usuário:', error.message);
