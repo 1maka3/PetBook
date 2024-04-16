@@ -1,20 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 *{
     margin: 0;
     padding: 0;
-    font-family: 'JetBrains Mono';
+    font-family: 'Roboto', sans-serif;
+
 }
 
+.background-image {
+    background-image: url('caminho/para/sua/imagem.jpg'); /* Atualize com o caminho correto */
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Fixa a imagem de fundo durante a rolagem */
+    background-size: cover; /* Garante que a imagem de fundo cubra todo o espaço disponível */
+}
 section{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    height: 100%;  
     width: 100%;
-
-    background: url('LOGIN/Fundo.jpg');
     background-position: center;
     background-size: cover;
+    
 }
 
 .form-box{
@@ -33,6 +41,7 @@ h2{
     font-size: 2em;
     color: #fff;
     text-align: center;
+    transform: translate(0%, 80%);
 }
 
 .inputbox{
@@ -84,8 +93,9 @@ input:valid ~ label{
     margin-right: 3px;
 }
 .forget label a{
-    color: #fff;
+    color: #94c6ff;
     text-decoration: none;
+    font-weight: bold;
 }
 .forget label a:hover{
     text-decoration: underline;
@@ -101,6 +111,7 @@ button{
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
+    color: #fff;
 }
 
 .register{
@@ -122,7 +133,7 @@ button{
     position: absolute;
     top: 0%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, 5%);
 }
 
 .bubble-message {
@@ -175,3 +186,44 @@ button{
 #loginSuccess {
     display: none;
 }
+
+.body-walking-paws {
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Ajustar para cobrir a altura total da tela */
+  }
+  
+  .paw-print {
+    position: absolute;
+    z-index: 1000;
+    background-image: url('ELEMENTOS/PATA_PRETA.png');
+    background-image: url('ELEMENTOS/PATA_ROSA.png');
+    background-image: url('ELEMENTOS/PATA_CINZA.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+  
+  @keyframes showPaw {
+    0%, 100% { opacity: 0; }
+    25%, 75% { opacity: 1; }
+  }
+
+  .random-background {
+    height: 100vh; /* ou 100% dependendo de como você estruturou seu layout */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }

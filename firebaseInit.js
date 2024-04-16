@@ -12,3 +12,7 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
   
+firebase.analytics();
+
+// Inicializa Firestore
+var db = firebase.firestore();
